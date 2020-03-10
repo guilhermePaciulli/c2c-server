@@ -1,42 +1,29 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :update, :destroy]
 
-  # GET /products
   def index
     @products = Product.all
-
-    # render json: @products
     render json: ProductSerializer.new(@products).serializable_hash
   end
 
-  # GET /products/1
   def show
-    render json: @product
+    render json: ProductSerializer.new(@product).serializable_hash
   end
 
-  # POST /products
   def create
     @product = Product.new(product_params)
-
-    if @product.save
-      render json: @product, status: :created, location: @product
-    else
-      render json: @product.errors, status: :unprocessable_entity
-    end
+    @product.save!
+    render json: ProductSerializer.new(@product).serializable_hash, status: :created, location: @product
   end
 
-  # PATCH/PUT /products/1
   def update
-    if @product.update(product_params)
-      render json: @product
-    else
-      render json: @product.errors, status: :unprocessable_entity
-    end
+    @product.update!(product_params)
+    head :no_content
   end
 
-  # DELETE /products/1
   def destroy
     @product.destroy
+    head :no_content
   end
 
   private
