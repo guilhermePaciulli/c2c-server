@@ -47,26 +47,14 @@ RSpec.describe "Products API", type: :request do
   end
 
   describe 'POST /products' do
-    let(:valid_attributes) {
-                              {
-                               name: 'Jetski Fera',
-                               price: 10.5,
-                               description: 'Jetski muito fera',
-                               picture: Rack::Test::UploadedFile.new('spec/support/fixtures/img.jpg', 'image/jpg')
-                              }.to_json
-                            }
-    let(:invalid_attributes) {
-                              {
-                               name: 'Jetski Fera',
-                               price: 10.5,
-                               picture: Rack::Test::UploadedFile.new('spec/support/fixtures/img.jpg', 'image/jpg')
-                              }.to_json
-                            }
-
     context 'when the request is valid' do
-      before { post '/products', params: valid_attributes }
+      before { post '/products', params: { :name => "Jetski Fera", :price => 10.5,
+                                           :description => "Jetski muito fera",
+                                           :picture => Rack::Test::UploadedFile.new('spec/support/fixtures/img.jpg', 'image/jpg') } }
+
       it 'creates a fast product ad' do
-        expect(json['data']['name']).to eq('Jetski Fera')
+        puts json
+        expect(json['data']['attributes']['name']).to eq('Jetski Fera')
       end
 
       it 'returns status code 201' do
@@ -75,15 +63,15 @@ RSpec.describe "Products API", type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/products', params: invalid_attributes }
-
+      before { post '/products', params: { :name => "Jetski Fera", :price => 10.5,
+                                           :description => "Jetski muito fera" } }
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Validation failed: description can't be blank/)
+          .to match(/Validation failed: Picture can't be blank/)
       end
     end
   end

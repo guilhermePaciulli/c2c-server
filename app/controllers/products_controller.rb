@@ -18,11 +18,12 @@ class ProductsController < ApplicationController
 
   def update
     @product.update!(product_params)
-    render json: ProductSerializer.new(@product).serializable_hash
+    head :no_content
   end
 
   def destroy
     @product.destroy
+    head :no_content
   end
 
   private
