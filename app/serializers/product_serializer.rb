@@ -4,6 +4,10 @@ class ProductSerializer
   attributes :id, :name, :description, :price
 
   attribute :product_image_url do |object|
-    object.picture.service_url
+    if Rails.env.test?
+      Rails.application.routes.url_helpers.rails_blob_path(object.picture)
+    else
+      object.picture.service_url
+    end
   end
 end

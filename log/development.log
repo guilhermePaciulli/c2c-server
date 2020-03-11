@@ -569,3 +569,840 @@ Processing by ProductsController#index as */*
 Completed 200 OK in 440ms (Views: 0.3ms | ActiveRecord: 11.9ms | Allocations: 153709)
 
 
+Started GET "/products/1" for 127.0.0.1 at 2020-03-09 19:22:51 -0300
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (1.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:39:in `set_product'
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+  [1m[36mActiveStorage::Blob Load (8.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+[36m  Disk Storage (6.7ms) [0m[34mGenerated URL for file at key: i6qa1t5d9hpykgg03pwce44wm53i ()[0m
+Completed 500 Internal Server Error in 109ms (ActiveRecord: 27.7ms | Allocations: 25815)
+
+
+  
+URI::InvalidURIError (bad URI(is not URI?): nil):
+  
+app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+app/controllers/products_controller.rb:10:in `show'
+Started GET "/products" for 127.0.0.1 at 2020-03-09 19:26:59 -0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mActiveStorage::Attachment Load (2.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+  [1m[36mActiveStorage::Blob Load (7.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: i6qa1t5d9hpykgg03pwce44wm53i ()[0m
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 10.9ms | Allocations: 2609)
+
+
+  
+URI::InvalidURIError (bad URI(is not URI?): nil):
+  
+app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (54.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "c2c_server_development"[0m
+  [1m[35m (50.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "c2c_server_test"[0m
+  [1m[35m (159.7ms)[0m  [1m[35mCREATE DATABASE "c2c_server_development" ENCODING = 'unicode'[0m
+  [1m[35m (72.0ms)[0m  [1m[35mCREATE DATABASE "c2c_server_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (23.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" character varying, "price" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.5ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200305034951)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200305032609);
+
+[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-09 22:29:25.613401"], ["updated_at", "2020-03-09 22:29:25.613401"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b2f2a12c3c45d2fb7f4a93fc6f288caa63821970"], ["created_at", "2020-03-09 22:29:25.622738"], ["updated_at", "2020-03-09 22:29:25.622738"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (55.8ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" character varying, "price" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200305034951)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200305032609);
+
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-09 22:29:25.746573"], ["updated_at", "2020-03-09 22:29:25.746573"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (1.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-03-09 22:29:25.751301"], ["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b2f2a12c3c45d2fb7f4a93fc6f288caa63821970"], ["created_at", "2020-03-09 22:29:25.756151"], ["updated_at", "2020-03-09 22:29:25.756151"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/products" for 127.0.0.1 at 2020-03-09 19:29:33 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (5.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 6.8ms | Allocations: 2643)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2020-03-09 19:29:44 -0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:39:in `set_product'
+Completed 404 Not Found in 39ms (ActiveRecord: 33.9ms | Allocations: 1137)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Product with 'id'=1):
+  
+app/controllers/products_controller.rb:39:in `set_product'
+Started GET "/products/2" for 127.0.0.1 at 2020-03-09 19:29:52 -0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (4.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:39:in `set_product'
+Completed 404 Not Found in 6ms (ActiveRecord: 4.8ms | Allocations: 610)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Product with 'id'=2):
+  
+app/controllers/products_controller.rb:39:in `set_product'
+Started GET "/products" for 127.0.0.1 at 2020-03-09 19:30:08 -0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 679)
+
+
+Started GET "/products" for 127.0.0.1 at 2020-03-09 19:30:19 -0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 680)
+
+
+Started GET "/products" for 127.0.0.1 at 2020-03-09 19:30:23 -0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 662)
+
+
+Started POST "/products" for ::1 at 2020-03-09 19:30:44 -0300
+Processing by ProductsController#create as */*
+  Parameters: {"name"=>"Jetski", "description"=>"Esse jetski é muito mais top que muita gente por aí", "price"=>"34000", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007f9b80abea78 @tempfile=#<Tempfile:/var/folders/7t/pgv_hrjs177fs5d_3w14f1hr0000gn/T/RackMultipart20200309-24689-1n95y6p.jpg>, @original_filename="233927001402415.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture\"; filename=\"233927001402415.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[36mProduct Create (1.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Jetski"], ["description", "Esse jetski é muito mais top que muita gente por aí"], ["price", 34000.0], ["created_at", "2020-03-09 22:30:44.868612"], ["updated_at", "2020-03-09 22:30:44.868612"]]
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[36mActiveStorage::Blob Create (1.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "t0jsdu93fx007172wcw0fd4gmmca"], ["filename", "233927001402415.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 53279], ["checksum", "kVvj/VOo20+vqxc2YrisXg=="], ["created_at", "2020-03-09 22:30:44.877599"]]
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[36mActiveStorage::Attachment Create (6.0ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "picture"], ["record_type", "Product"], ["record_id", 1], ["blob_id", 1], ["created_at", "2020-03-09 22:30:44.883028"]]
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[36mProduct Update (0.7ms)[0m  [1m[33mUPDATE "products" SET "updated_at" = $1 WHERE "products"."id" = $2[0m  [["updated_at", "2020-03-09 22:30:44.891269"], ["id", 1]]
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:16:in `create'
+[36m  Disk Storage (1.8ms) [0m[32mUploaded file to key: t0jsdu93fx007172wcw0fd4gmmca (checksum: kVvj/VOo20+vqxc2YrisXg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: fff8da8a-f18b-4dbf-887d-0620bdf50d23) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007f9b821e31e0 @uri=#<URI::GID gid://c2c-server/ActiveStorage::Blob/1>>
+[36m  Disk Storage (5.0ms) [0m[34mGenerated URL for file at key: t0jsdu93fx007172wcw0fd4gmmca ()[0m
+Completed 500 Internal Server Error in 118ms (ActiveRecord: 15.7ms | Allocations: 48107)
+
+
+  
+URI::InvalidURIError (bad URI(is not URI?): nil):
+  
+app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+app/controllers/products_controller.rb:18:in `create'
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fff8da8a-f18b-4dbf-887d-0620bdf50d23] Performing ActiveStorage::AnalyzeJob (Job ID: fff8da8a-f18b-4dbf-887d-0620bdf50d23) from Async(active_storage_analysis) enqueued at 2020-03-09T22:30:44Z with arguments: #<GlobalID:0x00007f9b7fe5a8e0 @uri=#<URI::GID gid://c2c-server/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fff8da8a-f18b-4dbf-887d-0620bdf50d23] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: t0jsdu93fx007172wcw0fd4gmmca[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fff8da8a-f18b-4dbf-887d-0620bdf50d23] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fff8da8a-f18b-4dbf-887d-0620bdf50d23]   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fff8da8a-f18b-4dbf-887d-0620bdf50d23]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fff8da8a-f18b-4dbf-887d-0620bdf50d23]   [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fff8da8a-f18b-4dbf-887d-0620bdf50d23] Performed ActiveStorage::AnalyzeJob (Job ID: fff8da8a-f18b-4dbf-887d-0620bdf50d23) from Async(active_storage_analysis) in 10.86ms
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (44.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "c2c_server_development"[0m
+  [1m[35m (40.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "c2c_server_test"[0m
+  [1m[35m (131.9ms)[0m  [1m[35mCREATE DATABASE "c2c_server_development" ENCODING = 'unicode'[0m
+  [1m[35m (59.0ms)[0m  [1m[35mCREATE DATABASE "c2c_server_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" character varying, "price" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200305034951)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200305032609);
+
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-09 22:32:57.743015"], ["updated_at", "2020-03-09 22:32:57.743015"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b2f2a12c3c45d2fb7f4a93fc6f288caa63821970"], ["created_at", "2020-03-09 22:32:57.751725"], ["updated_at", "2020-03-09 22:32:57.751725"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" character varying, "price" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200305034951)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200305032609);
+
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-09 22:32:57.833248"], ["updated_at", "2020-03-09 22:32:57.833248"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-03-09 22:32:57.837167"], ["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b2f2a12c3c45d2fb7f4a93fc6f288caa63821970"], ["created_at", "2020-03-09 22:32:57.840685"], ["updated_at", "2020-03-09 22:32:57.840685"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/products" for ::1 at 2020-03-09 19:33:11 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as */*
+  Parameters: {"product"=>{}}
+  [1m[36mProduct Load (4.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 6.3ms | Allocations: 1032)
+
+
+Started POST "/products" for ::1 at 2020-03-09 19:33:15 -0300
+Processing by ProductsController#create as */*
+  Parameters: {"name"=>"Jetski", "description"=>"Esse jetski é muito mais top que muita gente por aí", "price"=>"34000", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007fa307f5efe0 @tempfile=#<Tempfile:/var/folders/7t/pgv_hrjs177fs5d_3w14f1hr0000gn/T/RackMultipart20200309-24834-1kg1idq.jpg>, @original_filename="233927001402415.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture\"; filename=\"233927001402415.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[36mProduct Create (0.8ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Jetski"], ["description", "Esse jetski é muito mais top que muita gente por aí"], ["price", 34000.0], ["created_at", "2020-03-09 22:33:15.720313"], ["updated_at", "2020-03-09 22:33:15.720313"]]
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[36mActiveStorage::Blob Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "y5jqig6thk0p3u1nrqk4qscpccqz"], ["filename", "233927001402415.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 53279], ["checksum", "kVvj/VOo20+vqxc2YrisXg=="], ["created_at", "2020-03-09 22:33:15.730682"]]
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "picture"], ["record_type", "Product"], ["record_id", 1], ["blob_id", 1], ["created_at", "2020-03-09 22:33:15.733173"]]
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[36mProduct Update (0.3ms)[0m  [1m[33mUPDATE "products" SET "updated_at" = $1 WHERE "products"."id" = $2[0m  [["updated_at", "2020-03-09 22:33:15.735156"], ["id", 1]]
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:16:in `create'
+[36m  S3 Storage (1589.0ms) [0m[32mUploaded file to key: y5jqig6thk0p3u1nrqk4qscpccqz (checksum: kVvj/VOo20+vqxc2YrisXg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: bbd53c12-82fd-47df-a55d-d354f1125acf) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007fa30c91cfb0 @uri=#<URI::GID gid://c2c-server/ActiveStorage::Blob/1>>
+[36m  S3 Storage (5.5ms) [0m[34mGenerated URL for file at key: y5jqig6thk0p3u1nrqk4qscpccqz (https://customer2customer-images.s3.us-east-2.amazonaws.com/y5jqig6thk0p3u1nrqk4qscpccqz?response-content-disposition=inline%3B%20filename%3D%22233927001402415.jpg%22%3B%20filename%2A%3DUTF-8%27%27233927001402415.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4WEQPPK4B5FBEKU6%2F20200309%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200309T223317Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=1abef76adb471efa3308657bc1cd2f067f212c0fc5725f2e4c5b340971020e13)[0m
+Completed 201 Created in 2134ms (Views: 0.6ms | ActiveRecord: 17.5ms | Allocations: 178518)
+
+
+  [1m[36mActiveStorage::Blob Load (1.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [bbd53c12-82fd-47df-a55d-d354f1125acf] Performing ActiveStorage::AnalyzeJob (Job ID: bbd53c12-82fd-47df-a55d-d354f1125acf) from Async(active_storage_analysis) enqueued at 2020-03-09T22:33:17Z with arguments: #<GlobalID:0x00007fa308a22f08 @uri=#<URI::GID gid://c2c-server/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [bbd53c12-82fd-47df-a55d-d354f1125acf] [36m  S3 Storage (959.4ms) [0m[34mDownloaded file from key: y5jqig6thk0p3u1nrqk4qscpccqz[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [bbd53c12-82fd-47df-a55d-d354f1125acf] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [bbd53c12-82fd-47df-a55d-d354f1125acf]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [bbd53c12-82fd-47df-a55d-d354f1125acf]   [1m[36mActiveStorage::Blob Update (0.8ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [bbd53c12-82fd-47df-a55d-d354f1125acf]   [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [bbd53c12-82fd-47df-a55d-d354f1125acf] Performed ActiveStorage::AnalyzeJob (Job ID: bbd53c12-82fd-47df-a55d-d354f1125acf) from Async(active_storage_analysis) in 975.13ms
+Started GET "/products" for ::1 at 2020-03-09 19:33:41 -0300
+Processing by ProductsController#index as */*
+  Parameters: {"product"=>{}}
+  [1m[36mProduct Load (5.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+  [1m[36mActiveStorage::Blob Load (1.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+[36m  S3 Storage (1.8ms) [0m[34mGenerated URL for file at key: y5jqig6thk0p3u1nrqk4qscpccqz (https://customer2customer-images.s3.us-east-2.amazonaws.com/y5jqig6thk0p3u1nrqk4qscpccqz?response-content-disposition=inline%3B%20filename%3D%22233927001402415.jpg%22%3B%20filename%2A%3DUTF-8%27%27233927001402415.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4WEQPPK4B5FBEKU6%2F20200309%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200309T223341Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=b244d849fb77a924657fe142adce60d92fc4886a0941b59dea11644e336b6e9c)[0m
+Completed 200 OK in 21ms (Views: 0.4ms | ActiveRecord: 7.8ms | Allocations: 3798)
+
+
+Started GET "/products/1" for ::1 at 2020-03-09 19:33:49 -0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:38:in `set_product'
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+[36m  S3 Storage (1.2ms) [0m[34mGenerated URL for file at key: y5jqig6thk0p3u1nrqk4qscpccqz (https://customer2customer-images.s3.us-east-2.amazonaws.com/y5jqig6thk0p3u1nrqk4qscpccqz?response-content-disposition=inline%3B%20filename%3D%22233927001402415.jpg%22%3B%20filename%2A%3DUTF-8%27%27233927001402415.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4WEQPPK4B5FBEKU6%2F20200309%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200309T223349Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=887e2f289deb5337a158f1e9b6bbd978d822224774b8d4d7eea6f940a6a71013)[0m
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 3618)
+
+
+Started POST "/products" for ::1 at 2020-03-09 19:39:13 -0300
+Processing by ProductsController#create as */*
+  Parameters: {"description"=>"Esse jetski é muito mais top que muita gente por aí", "price"=>"34000", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007fa30b97d690 @tempfile=#<Tempfile:/var/folders/7t/pgv_hrjs177fs5d_3w14f1hr0000gn/T/RackMultipart20200309-24834-sktwc0.jpg>, @original_filename="233927001402415.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture\"; filename=\"233927001402415.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+Completed 422 Unprocessable Entity in 10ms (Views: 1.8ms | ActiveRecord: 0.0ms | Allocations: 927)
+
+
+Started POST "/products" for ::1 at 2020-03-09 19:39:24 -0300
+Processing by ProductsController#create as */*
+  Parameters: {"picture"=>#<ActionDispatch::Http::UploadedFile:0x00007fa30b996938 @tempfile=#<Tempfile:/var/folders/7t/pgv_hrjs177fs5d_3w14f1hr0000gn/T/RackMultipart20200309-24834-1j85cfz.jpg>, @original_filename="233927001402415.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture\"; filename=\"233927001402415.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1849)
+
+
+Started POST "/products" for ::1 at 2020-03-09 19:41:02 -0300
+Processing by ProductsController#create as */*
+  Parameters: {"name"=>"Jetski", "description"=>"Esse jetski é muito mais top que muita gente por aí", "price"=>"34000"}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 699)
+
+
+Started POST "/products" for ::1 at 2020-03-09 19:46:38 -0300
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#create as */*
+  Parameters: {"name"=>"Jetski", "description"=>"Esse jetski é muito mais top que muita gente por aí", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007f9ec6bc4078 @tempfile=#<Tempfile:/var/folders/7t/pgv_hrjs177fs5d_3w14f1hr0000gn/T/RackMultipart20200309-25028-7tulwv.jpg>, @original_filename="233927001402415.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture\"; filename=\"233927001402415.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/products_controller.rb:16:in `create'
+[36m  S3 Storage (1.2ms) [0m[34mGenerated URL for file at key: pkv6gp0ivhwihgy1murqf6op7wwp (https://customer2customer-images.s3.us-east-2.amazonaws.com/pkv6gp0ivhwihgy1murqf6op7wwp?response-content-disposition=inline%3B%20filename%3D%22233927001402415.jpg%22%3B%20filename%2A%3DUTF-8%27%27233927001402415.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4WEQPPK4B5FBEKU6%2F20200309%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200309T224639Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=dc7f727eafa74bb296f7230a8fd499351f0c04aa51a60822b87a69e4d50b5a41)[0m
+Completed 201 Created in 480ms (Views: 0.5ms | ActiveRecord: 10.0ms | Allocations: 167176)
+
+
+Started POST "/products" for ::1 at 2020-03-09 19:46:55 -0300
+Processing by ProductsController#create as */*
+  Parameters: {"name"=>"Jetski", "description"=>"Esse jetski é muito mais top que muita gente por aí", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007f9ec6d563c8 @tempfile=#<Tempfile:/var/folders/7t/pgv_hrjs177fs5d_3w14f1hr0000gn/T/RackMultipart20200309-25028-ricrs1.jpg>, @original_filename="233927001402415.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture\"; filename=\"233927001402415.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/products_controller.rb:16:in `create'
+Completed 422 Unprocessable Entity in 36ms (ActiveRecord: 7.0ms | Allocations: 20720)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Price can't be blank, Price is not a number):
+  
+app/controllers/products_controller.rb:16:in `create'
+Started POST "/products" for ::1 at 2020-03-09 19:51:51 -0300
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#create as */*
+  Parameters: {"name"=>"Jetski", "description"=>"Esse jetski é muito mais top que muita gente por aí", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007f96a2a5ab00 @tempfile=#<Tempfile:/var/folders/7t/pgv_hrjs177fs5d_3w14f1hr0000gn/T/RackMultipart20200309-25385-1spv97c.jpg>, @original_filename="233927001402415.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture\"; filename=\"233927001402415.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/products_controller.rb:16:in `create'
+Completed 500 Internal Server Error in 550ms (ActiveRecord: 11.7ms | Allocations: 202007)
+
+
+  
+NoMethodError (undefined method `json_response' for #<ProductsController:0x00007f96a2a47230>):
+  
+app/controllers/concerns/exception_handler.rb:11:in `block (2 levels) in <module:ExceptionHandler>'
+Started POST "/products" for ::1 at 2020-03-09 19:53:15 -0300
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#create as */*
+  Parameters: {"name"=>"Jetski", "description"=>"Esse jetski é muito mais top que muita gente por aí", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007fae18bdebb0 @tempfile=#<Tempfile:/var/folders/7t/pgv_hrjs177fs5d_3w14f1hr0000gn/T/RackMultipart20200309-25554-v1nrum.jpg>, @original_filename="233927001402415.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture\"; filename=\"233927001402415.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/products_controller.rb:16:in `create'
+Completed 422 Unprocessable Entity in 469ms (Views: 0.3ms | ActiveRecord: 9.2ms | Allocations: 165925)
+
+
+Started GET "/products" for ::1 at 2020-03-09 22:02:09 -0300
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (4.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `puts'
+  [1m[36mActiveStorage::Attachment Load (6.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+[36m  S3 Storage (5.9ms) [0m[34mGenerated URL for file at key: y5jqig6thk0p3u1nrqk4qscpccqz (https://customer2customer-images.s3.us-east-2.amazonaws.com/y5jqig6thk0p3u1nrqk4qscpccqz?response-content-disposition=inline%3B%20filename%3D%22233927001402415.jpg%22%3B%20filename%2A%3DUTF-8%27%27233927001402415.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4WEQPPK4B5FBEKU6%2F20200310%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200310T010210Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=9514e2ffcadab9e1b403b5974ea62e9f8474854eb7188210a1053d6ed1edb81d)[0m
+Completed 200 OK in 515ms (Views: 0.4ms | ActiveRecord: 19.7ms | Allocations: 153907)
+
+
+Started GET "/products" for ::1 at 2020-03-09 22:51:43 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as */*
+  Parameters: {"product"=>{}}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 6.7ms | Allocations: 4551)
+
+
+  
+LocalJumpError (unexpected return):
+  
+app/serializers/product_serializer.rb:8:in `block in <class:ProductSerializer>'
+app/controllers/products_controller.rb:6:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (57.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "c2c_server_development"[0m
+  [1m[35m (44.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "c2c_server_test"[0m
+  [1m[35m (162.4ms)[0m  [1m[35mCREATE DATABASE "c2c_server_development" ENCODING = 'unicode'[0m
+  [1m[35m (90.9ms)[0m  [1m[35mCREATE DATABASE "c2c_server_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" character varying, "price" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200305034951)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200305032609);
+
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-10 02:08:11.154635"], ["updated_at", "2020-03-10 02:08:11.154635"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b2f2a12c3c45d2fb7f4a93fc6f288caa63821970"], ["created_at", "2020-03-10 02:08:11.173698"], ["updated_at", "2020-03-10 02:08:11.173698"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" character varying, "price" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200305034951)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200305032609);
+
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-10 02:08:11.240240"], ["updated_at", "2020-03-10 02:08:11.240240"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-03-10 02:08:11.244439"], ["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b2f2a12c3c45d2fb7f4a93fc6f288caa63821970"], ["created_at", "2020-03-10 02:08:11.248855"], ["updated_at", "2020-03-10 02:08:11.248855"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (44.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "c2c_server_development"[0m
+  [1m[35m (41.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "c2c_server_test"[0m
+  [1m[35m (125.4ms)[0m  [1m[35mCREATE DATABASE "c2c_server_development" ENCODING = 'unicode'[0m
+  [1m[35m (92.3ms)[0m  [1m[35mCREATE DATABASE "c2c_server_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" character varying, "price" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200305034951)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200305032609);
+
+[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-10 02:08:41.128172"], ["updated_at", "2020-03-10 02:08:41.128172"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b2f2a12c3c45d2fb7f4a93fc6f288caa63821970"], ["created_at", "2020-03-10 02:08:41.147362"], ["updated_at", "2020-03-10 02:08:41.147362"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" character varying, "price" float, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200305034951)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200305032609);
+
+[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-10 02:08:41.212200"], ["updated_at", "2020-03-10 02:08:41.212200"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-03-10 02:08:41.217101"], ["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "b2f2a12c3c45d2fb7f4a93fc6f288caa63821970"], ["created_at", "2020-03-10 02:08:41.221933"], ["updated_at", "2020-03-10 02:08:41.221933"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/products/1" for ::1 at 2020-03-09 23:19:53 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"1", "product"=>{}}
+  [1m[36mProduct Load (3.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30:in `set_product'
+Completed 404 Not Found in 16ms (Views: 0.4ms | ActiveRecord: 13.3ms | Allocations: 1229)
+
+
+Started POST "/products" for ::1 at 2020-03-09 23:20:05 -0300
+Processing by ProductsController#create as */*
+  Parameters: {"name"=>"Jetski", "description"=>"Esse jetski é muito mais top que muita gente por aí", "price"=>"34000", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007fd8a332e9b0 @tempfile=#<Tempfile:/var/folders/7t/pgv_hrjs177fs5d_3w14f1hr0000gn/T/RackMultipart20200309-31744-gqaser.jpg>, @original_filename="233927001402415.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture\"; filename=\"233927001402415.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mProduct Create (3.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Jetski"], ["description", "Esse jetski é muito mais top que muita gente por aí"], ["price", 34000.0], ["created_at", "2020-03-10 02:20:05.305891"], ["updated_at", "2020-03-10 02:20:05.305891"]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mActiveStorage::Blob Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "g5e0ytbc7ftp3n9r5oawo2xuwskr"], ["filename", "233927001402415.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 53279], ["checksum", "kVvj/VOo20+vqxc2YrisXg=="], ["created_at", "2020-03-10 02:20:05.321212"]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mActiveStorage::Attachment Create (1.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "picture"], ["record_type", "Product"], ["record_id", 1], ["blob_id", 1], ["created_at", "2020-03-10 02:20:05.328310"]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mProduct Update (0.3ms)[0m  [1m[33mUPDATE "products" SET "updated_at" = $1 WHERE "products"."id" = $2[0m  [["updated_at", "2020-03-10 02:20:05.332319"], ["id", 1]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:15:in `create'
+[36m  S3 Storage (1670.3ms) [0m[32mUploaded file to key: g5e0ytbc7ftp3n9r5oawo2xuwskr (checksum: kVvj/VOo20+vqxc2YrisXg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 1d17e3b2-1ea9-4e45-80fe-63857a8ec26d) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007fd8a6b3ee68 @uri=#<URI::GID gid://c2c-server/ActiveStorage::Blob/1>>
+[36m  S3 Storage (5.1ms) [0m[34mGenerated URL for file at key: g5e0ytbc7ftp3n9r5oawo2xuwskr (https://customer2customer-images.s3.us-east-2.amazonaws.com/g5e0ytbc7ftp3n9r5oawo2xuwskr?response-content-disposition=inline%3B%20filename%3D%22233927001402415.jpg%22%3B%20filename%2A%3DUTF-8%27%27233927001402415.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4WEQPPK4B5FBEKU6%2F20200310%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200310T022007Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=82f1b754808c87ada8b56e1315549d66cf62ef65bda54ceaf61b73b28287cf6d)[0m
+Completed 500 Internal Server Error in 1873ms (ActiveRecord: 12.0ms | Allocations: 61888)
+
+
+  
+LocalJumpError (unexpected return):
+  
+app/serializers/product_serializer.rb:8:in `block in <class:ProductSerializer>'
+app/controllers/products_controller.rb:16:in `create'
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d17e3b2-1ea9-4e45-80fe-63857a8ec26d] Performing ActiveStorage::AnalyzeJob (Job ID: 1d17e3b2-1ea9-4e45-80fe-63857a8ec26d) from Async(active_storage_analysis) enqueued at 2020-03-10T02:20:07Z with arguments: #<GlobalID:0x00007fd8a6f994e0 @uri=#<URI::GID gid://c2c-server/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d17e3b2-1ea9-4e45-80fe-63857a8ec26d] [36m  S3 Storage (805.7ms) [0m[34mDownloaded file from key: g5e0ytbc7ftp3n9r5oawo2xuwskr[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d17e3b2-1ea9-4e45-80fe-63857a8ec26d] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d17e3b2-1ea9-4e45-80fe-63857a8ec26d]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d17e3b2-1ea9-4e45-80fe-63857a8ec26d]   [1m[36mActiveStorage::Blob Update (0.7ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d17e3b2-1ea9-4e45-80fe-63857a8ec26d]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d17e3b2-1ea9-4e45-80fe-63857a8ec26d] Performed ActiveStorage::AnalyzeJob (Job ID: 1d17e3b2-1ea9-4e45-80fe-63857a8ec26d) from Async(active_storage_analysis) in 827.21ms
+Started POST "/products" for ::1 at 2020-03-09 23:20:47 -0300
+Processing by ProductsController#create as */*
+  Parameters: {"name"=>"Jetski", "description"=>"Esse jetski é muito mais top que muita gente por aí", "price"=>"34000", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007fd8a34e2bd0 @tempfile=#<Tempfile:/var/folders/7t/pgv_hrjs177fs5d_3w14f1hr0000gn/T/RackMultipart20200309-31744-xen0ph.jpg>, @original_filename="233927001402415.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture\"; filename=\"233927001402415.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mProduct Create (0.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Jetski"], ["description", "Esse jetski é muito mais top que muita gente por aí"], ["price", 34000.0], ["created_at", "2020-03-10 02:20:47.998256"], ["updated_at", "2020-03-10 02:20:47.998256"]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "vr85tkb18smbbeffwwopj51q0eoc"], ["filename", "233927001402415.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 53279], ["checksum", "kVvj/VOo20+vqxc2YrisXg=="], ["created_at", "2020-03-10 02:20:48.004744"]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "picture"], ["record_type", "Product"], ["record_id", 2], ["blob_id", 2], ["created_at", "2020-03-10 02:20:48.006847"]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mProduct Update (0.6ms)[0m  [1m[33mUPDATE "products" SET "updated_at" = $1 WHERE "products"."id" = $2[0m  [["updated_at", "2020-03-10 02:20:48.008814"], ["id", 2]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:15:in `create'
+[36m  S3 Storage (3232.1ms) [0m[32mUploaded file to key: vr85tkb18smbbeffwwopj51q0eoc (checksum: kVvj/VOo20+vqxc2YrisXg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 054785b5-5e85-4d93-850d-83334d4208a4) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007fd8a8123990 @uri=#<URI::GID gid://c2c-server/ActiveStorage::Blob/2>>
+[36m  S3 Storage (1.0ms) [0m[34mGenerated URL for file at key: vr85tkb18smbbeffwwopj51q0eoc (https://customer2customer-images.s3.us-east-2.amazonaws.com/vr85tkb18smbbeffwwopj51q0eoc?response-content-disposition=inline%3B%20filename%3D%22233927001402415.jpg%22%3B%20filename%2A%3DUTF-8%27%27233927001402415.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4WEQPPK4B5FBEKU6%2F20200310%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200310T022051Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=90cea1b236c5842221be57d2476f8496771ee827d2b25b6846192359e3eb2ed7)[0m
+Completed 201 Created in 3314ms (Views: 0.8ms | ActiveRecord: 17.7ms | Allocations: 30024)
+
+
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [054785b5-5e85-4d93-850d-83334d4208a4] Performing ActiveStorage::AnalyzeJob (Job ID: 054785b5-5e85-4d93-850d-83334d4208a4) from Async(active_storage_analysis) enqueued at 2020-03-10T02:20:51Z with arguments: #<GlobalID:0x00007fd8a3ba5300 @uri=#<URI::GID gid://c2c-server/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [054785b5-5e85-4d93-850d-83334d4208a4] [36m  S3 Storage (823.0ms) [0m[34mDownloaded file from key: vr85tkb18smbbeffwwopj51q0eoc[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [054785b5-5e85-4d93-850d-83334d4208a4] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [054785b5-5e85-4d93-850d-83334d4208a4]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [054785b5-5e85-4d93-850d-83334d4208a4]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [054785b5-5e85-4d93-850d-83334d4208a4]   [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [054785b5-5e85-4d93-850d-83334d4208a4] Performed ActiveStorage::AnalyzeJob (Job ID: 054785b5-5e85-4d93-850d-83334d4208a4) from Async(active_storage_analysis) in 832.35ms
+Started GET "/products/1" for ::1 at 2020-03-09 23:20:54 -0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"1", "product"=>{}}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30:in `set_product'
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+[36m  S3 Storage (1.0ms) [0m[34mGenerated URL for file at key: g5e0ytbc7ftp3n9r5oawo2xuwskr (https://customer2customer-images.s3.us-east-2.amazonaws.com/g5e0ytbc7ftp3n9r5oawo2xuwskr?response-content-disposition=inline%3B%20filename%3D%22233927001402415.jpg%22%3B%20filename%2A%3DUTF-8%27%27233927001402415.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4WEQPPK4B5FBEKU6%2F20200310%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200310T022054Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=8f66ab6a32e6545da3bdc9356de22d172245cc2f70b81418a70886c412e265f4)[0m
+Completed 200 OK in 29ms (Views: 0.4ms | ActiveRecord: 7.7ms | Allocations: 11883)
+
+
+Started POST "/products" for ::1 at 2020-03-09 23:23:02 -0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#create as */*
+  Parameters: {"name"=>"Jetski", "description"=>"Esse jetski é muito mais top que muita gente por aí", "price"=>"34000", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007f941db0e768 @tempfile=#<Tempfile:/var/folders/7t/pgv_hrjs177fs5d_3w14f1hr0000gn/T/RackMultipart20200309-31859-w939dk.jpg>, @original_filename="233927001402415.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture\"; filename=\"233927001402415.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Jetski"], ["description", "Esse jetski é muito mais top que muita gente por aí"], ["price", 34000.0], ["created_at", "2020-03-10 02:23:02.512963"], ["updated_at", "2020-03-10 02:23:02.512963"]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "94asmtjlee0k5il25a55swfw0r8s"], ["filename", "233927001402415.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 53279], ["checksum", "kVvj/VOo20+vqxc2YrisXg=="], ["created_at", "2020-03-10 02:23:02.526495"]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "picture"], ["record_type", "Product"], ["record_id", 3], ["blob_id", 3], ["created_at", "2020-03-10 02:23:02.533255"]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[36mProduct Update (0.6ms)[0m  [1m[33mUPDATE "products" SET "updated_at" = $1 WHERE "products"."id" = $2[0m  [["updated_at", "2020-03-10 02:23:02.536262"], ["id", 3]]
+  ↳ app/controllers/products_controller.rb:15:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:15:in `create'
+[36m  S3 Storage (3053.5ms) [0m[32mUploaded file to key: 94asmtjlee0k5il25a55swfw0r8s (checksum: kVvj/VOo20+vqxc2YrisXg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: e874b82d-c1e5-44bb-9466-c13e010225c1) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007f941df36ac0 @uri=#<URI::GID gid://c2c-server/ActiveStorage::Blob/3>>
+[36m  S3 Storage (5.8ms) [0m[34mGenerated URL for file at key: 94asmtjlee0k5il25a55swfw0r8s (https://customer2customer-images.s3.us-east-2.amazonaws.com/94asmtjlee0k5il25a55swfw0r8s?response-content-disposition=inline%3B%20filename%3D%22233927001402415.jpg%22%3B%20filename%2A%3DUTF-8%27%27233927001402415.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4WEQPPK4B5FBEKU6%2F20200310%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200310T022305Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=caca364436ccc7f5da08a20f2c00f7110ed1c819a0ab3448cc5ef1ef6b4b07e8)[0m
+Completed 201 Created in 3260ms (Views: 0.7ms | ActiveRecord: 13.1ms | Allocations: 64409)
+
+
+  [1m[36mActiveStorage::Blob Load (1.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e874b82d-c1e5-44bb-9466-c13e010225c1] Performing ActiveStorage::AnalyzeJob (Job ID: e874b82d-c1e5-44bb-9466-c13e010225c1) from Async(active_storage_analysis) enqueued at 2020-03-10T02:23:05Z with arguments: #<GlobalID:0x00007f941df679e0 @uri=#<URI::GID gid://c2c-server/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e874b82d-c1e5-44bb-9466-c13e010225c1] [36m  S3 Storage (965.0ms) [0m[34mDownloaded file from key: 94asmtjlee0k5il25a55swfw0r8s[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e874b82d-c1e5-44bb-9466-c13e010225c1] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e874b82d-c1e5-44bb-9466-c13e010225c1]   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e874b82d-c1e5-44bb-9466-c13e010225c1]   [1m[36mActiveStorage::Blob Update (0.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e874b82d-c1e5-44bb-9466-c13e010225c1]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e874b82d-c1e5-44bb-9466-c13e010225c1] Performed ActiveStorage::AnalyzeJob (Job ID: e874b82d-c1e5-44bb-9466-c13e010225c1) from Async(active_storage_analysis) in 983.63ms
+Started GET "/products/1" for ::1 at 2020-03-09 23:23:08 -0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"1", "product"=>{}}
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30:in `set_product'
+  [1m[36mActiveStorage::Attachment Load (1.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+[36m  S3 Storage (1.3ms) [0m[34mGenerated URL for file at key: g5e0ytbc7ftp3n9r5oawo2xuwskr (https://customer2customer-images.s3.us-east-2.amazonaws.com/g5e0ytbc7ftp3n9r5oawo2xuwskr?response-content-disposition=inline%3B%20filename%3D%22233927001402415.jpg%22%3B%20filename%2A%3DUTF-8%27%27233927001402415.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4WEQPPK4B5FBEKU6%2F20200310%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200310T022308Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=18d5842cea4f463c24cc7a661a36d0869008adecff51f7a533aa1a778c75b257)[0m
+Completed 200 OK in 26ms (Views: 0.8ms | ActiveRecord: 2.7ms | Allocations: 3999)
+
+
+Started GET "/products/1" for ::1 at 2020-03-09 23:29:30 -0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"1", "product"=>{}}
+  [1m[36mProduct Load (1.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30:in `set_product'
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:8:in `block in <class:ProductSerializer>'
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:8:in `block in <class:ProductSerializer>'
+Completed 500 Internal Server Error in 117ms (ActiveRecord: 14.8ms | Allocations: 34175)
+
+
+  
+ArgumentError (Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true):
+  
+app/serializers/product_serializer.rb:8:in `block in <class:ProductSerializer>'
+app/controllers/products_controller.rb:10:in `show'
+Started GET "/products/1" for ::1 at 2020-03-09 23:32:48 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"1", "product"=>{}}
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30:in `set_product'
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:8:in `block in <class:ProductSerializer>'
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:8:in `block in <class:ProductSerializer>'
+Completed 500 Internal Server Error in 102ms (ActiveRecord: 10.8ms | Allocations: 34175)
+
+
+  
+ArgumentError (Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true):
+  
+app/serializers/product_serializer.rb:8:in `block in <class:ProductSerializer>'
+app/controllers/products_controller.rb:10:in `show'
+Started GET "/products/1" for ::1 at 2020-03-09 23:33:40 -0300
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"1", "product"=>{}}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30:in `set_product'
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:8:in `block in <class:ProductSerializer>'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:8:in `block in <class:ProductSerializer>'
+Completed 200 OK in 102ms (Views: 0.2ms | ActiveRecord: 13.1ms | Allocations: 34309)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--078ff2e182752566bca3726833209f76331e4e61/233927001402415.jpg" for ::1 at 2020-03-09 23:33:47 -0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--078ff2e182752566bca3726833209f76331e4e61", "filename"=>"233927001402415"}
+  [1m[36mActiveStorage::Blob Load (8.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[36m  S3 Storage (11.3ms) [0m[34mGenerated URL for file at key: g5e0ytbc7ftp3n9r5oawo2xuwskr (https://customer2customer-images.s3.us-east-2.amazonaws.com/g5e0ytbc7ftp3n9r5oawo2xuwskr?response-content-disposition=inline%3B%20filename%3D%22233927001402415.jpg%22%3B%20filename%2A%3DUTF-8%27%27233927001402415.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4WEQPPK4B5FBEKU6%2F20200310%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200310T023347Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=998fcc3c0d20e8dcb50a61db604c14ee7f4c631f95d8bf019967d84cb97d2ecf)[0m
+Redirected to https://customer2customer-images.s3.us-east-2.amazonaws.com/g5e0ytbc7ftp3n9r5oawo2xuwskr?response-content-disposition=inline%3B%20filename%3D%22233927001402415.jpg%22%3B%20filename%2A%3DUTF-8%27%27233927001402415.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4WEQPPK4B5FBEKU6%2F20200310%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200310T023347Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=998fcc3c0d20e8dcb50a61db604c14ee7f4c631f95d8bf019967d84cb97d2ecf
+Completed 302 Found in 31ms (ActiveRecord: 8.6ms | Allocations: 3569)
+
+
+Started GET "/products/1" for ::1 at 2020-03-09 23:34:43 -0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30:in `set_product'
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:8:in `block in <class:ProductSerializer>'
+  [1m[36mActiveStorage::Blob Load (1.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:8:in `block in <class:ProductSerializer>'
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 2769)
+
+
+Started GET "/products/1" for ::1 at 2020-03-09 23:37:09 -0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30:in `set_product'
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 4.1ms | Allocations: 6990)
+
+
+  
+NameError (undefined local variable or method `rails' for ProductSerializer:Class
+Did you mean?  raise):
+  
+app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+app/controllers/products_controller.rb:10:in `show'
+Started GET "/products/1" for ::1 at 2020-03-09 23:37:19 -0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30:in `set_product'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.8ms | Allocations: 1864)
+
+
+  
+NameError (undefined local variable or method `rails' for ProductSerializer:Class
+Did you mean?  raise):
+  
+app/serializers/product_serializer.rb:7:in `block in <class:ProductSerializer>'
+app/controllers/products_controller.rb:10:in `show'
+Started GET "/products/1" for ::1 at 2020-03-09 23:37:51 -0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (6.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:30:in `set_product'
+  [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:10:in `block in <class:ProductSerializer>'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/serializers/product_serializer.rb:10:in `block in <class:ProductSerializer>'
+[36m  S3 Storage (1.6ms) [0m[34mGenerated URL for file at key: g5e0ytbc7ftp3n9r5oawo2xuwskr (https://customer2customer-images.s3.us-east-2.amazonaws.com/g5e0ytbc7ftp3n9r5oawo2xuwskr?response-content-disposition=inline%3B%20filename%3D%22233927001402415.jpg%22%3B%20filename%2A%3DUTF-8%27%27233927001402415.jpg&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4WEQPPK4B5FBEKU6%2F20200310%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200310T023751Z&X-Amz-Expires=300&X-Amz-SignedHeaders=host&X-Amz-Signature=5b560bba22f883439ca3c0c34217f5ed8b0f9a289c556bd0efe105aaa3c140ee)[0m
+Completed 200 OK in 146ms (Views: 0.3ms | ActiveRecord: 29.4ms | Allocations: 22068)
+
+
