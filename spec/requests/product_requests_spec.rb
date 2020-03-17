@@ -53,7 +53,6 @@ RSpec.describe "Products API", type: :request do
                                            :picture => Rack::Test::UploadedFile.new('spec/support/fixtures/img.jpg', 'image/jpg') } }
 
       it 'creates a fast product ad' do
-        puts json
         expect(json['data']['attributes']['name']).to eq('Jetski Fera')
       end
 
