@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UsersController, type: :request do
+RSpec.describe "Users creation", type: :request do
 
   describe "POST #create" do
     context "with valid params" do

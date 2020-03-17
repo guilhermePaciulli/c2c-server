@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Products API", type: :request do
+RSpec.describe "Products CRUD", type: :request do
 
   let!(:products) { create_list(:product, 10) }
   let!(:first_product) { products.first.id }
