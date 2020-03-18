@@ -70,6 +70,14 @@ RSpec.describe "Products CRUD", type: :request do
           .to match(/Validation failed: Picture can't be blank/)
       end
     end
+
+    context 'when the request is valid' do
+      before { post '/products', params: { :name => "Jetski Fera", :price => 10.5, :description => "Jetski muito fera", :picture => Rack::Test::UploadedFile.new('spec/support/fixtures/img.jpg', 'image/jpg') } }
+
+      it 'should return authorized access' do
+        expect(response).to have_http_status(401)
+      end
+    end
   end
 
 end
