@@ -48,9 +48,7 @@ RSpec.describe "Products CRUD", type: :request do
 
   describe 'POST /products' do
     context 'when the request is valid' do
-      before { post '/products', params: { :name => "Jetski Fera", :price => 10.5,
-                                           :description => "Jetski muito fera",
-                                           :picture => Rack::Test::UploadedFile.new('spec/support/fixtures/img.jpg', 'image/jpg') } }
+      before { post '/products', headers: authenticated_header, params: { :name => "Jetski Fera", :price => 10.5, :description => "Jetski muito fera", :picture => Rack::Test::UploadedFile.new('spec/support/fixtures/img.jpg', 'image/jpg') } }
 
       it 'creates a fast product ad' do
         expect(json['data']['attributes']['name']).to eq('Jetski Fera')
@@ -62,8 +60,7 @@ RSpec.describe "Products CRUD", type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/products', params: { :name => "Jetski Fera", :price => 10.5,
-                                           :description => "Jetski muito fera" } }
+      before { post '/products', headers: authenticated_header, params: { :name => "Jetski Fera", :price => 10.5, :description => "Jetski muito fera" } }
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
@@ -72,30 +69,6 @@ RSpec.describe "Products CRUD", type: :request do
         expect(response.body)
           .to match(/Validation failed: Picture can't be blank/)
       end
-    end
-  end
-
-  describe 'PUT /products/:id' do
-    let(:valid_attributes) { { name: 'Jetski 2.0' }.to_json }
-
-    context 'when the record exists' do
-      before { put "/products/#{first_product}", params: valid_attributes }
-
-      it 'updates the record' do
-        expect(response.body).to be_empty
-      end
-
-      it 'returns status code 204' do
-        expect(response).to have_http_status(204)
-      end
-    end
-  end
-
-  describe 'DELETE /products/:id' do
-    before { delete "/products/#{first_product}" }
-
-    it 'returns status code 204' do
-      expect(response).to have_http_status(204)
     end
   end
 
