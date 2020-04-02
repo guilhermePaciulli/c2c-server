@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :update, :destroy]
+  before_action :authenticate_user, only: [:create]
+  before_action :set_product, only: [:show]
 
   def index
     @products = Product.all
@@ -14,16 +15,6 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.save!
     render json: ProductSerializer.new(@product).serializable_hash, status: :created, location: @product
-  end
-
-  def update
-    @product.update!(product_params)
-    head :no_content
-  end
-
-  def destroy
-    @product.destroy
-    head :no_content
   end
 
   private
