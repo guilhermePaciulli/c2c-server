@@ -6,7 +6,7 @@ RSpec.describe "Login", type: :request do
 
   describe "POST #user_token" do
     context "with valid params" do
-      before { post '/user_token', params: { :email => user.email, :password => "foobar" } }
+      before { post '/user_token', params: { :email => user.email, :password => "foobarfoobar" } }
 
       it "returns a valid json" do
         expect(json["jwt"]).not_to be_empty
