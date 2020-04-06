@@ -10,9 +10,9 @@ class UsersController < ApplicationController
 
   def show
     if @user
-      render json: UserSerializer.new(@user).serializable_hash
+      render json: OpenUserSerializer.new(@user).serializable_hash
     else
-      render json: OpenUserSerializer.new(current_user).serializable_hash
+      render json: UserSerializer.new(current_user).serializable_hash
     end
   end
 
