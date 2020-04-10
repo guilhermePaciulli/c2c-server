@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_one_attached :profile_picture
+  has_one :address, dependent: :destroy, foreign_key: :user_id
   has_many :products, dependent: :destroy, foreign_key: :owner
 
   has_secure_password

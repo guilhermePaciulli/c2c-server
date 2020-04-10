@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   get 'user_info/:id' => 'users#show'
   get 'user_info' => 'users#show'
   resources :products
-
+  get 'address' => 'addresses#show'
+  post 'address' => 'addresses#create'
+  put 'address' => 'addresses#update'
 end
