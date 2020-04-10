@@ -6,6 +6,5 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { "foobarfoobar" }
     profile_picture { Rack::Test::UploadedFile.new('spec/support/fixtures/img.jpg', 'image/jpg') }
-    association :address, factory: :address
   end
 end

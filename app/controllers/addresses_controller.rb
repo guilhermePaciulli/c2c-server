@@ -3,7 +3,7 @@ class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :update]
 
   def show
-    render AddressSerializer.new(@address).serializable_hash
+    render json: AddressSerializer.new(@address).serializable_hash
   end
 
   def create
@@ -20,11 +20,6 @@ class AddressesController < ApplicationController
   private
     def set_address
       @address = current_user.address
-      if @address.present?
-        puts "Hello"
-      else
-        puts "Goodbye"
-      end
     end
 
     def address_params
