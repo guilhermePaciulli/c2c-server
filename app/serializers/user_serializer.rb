@@ -11,5 +11,7 @@ class UserSerializer
     end
   end
 
-  has_many :products
+  has_many :products, serializer: ProductSerializer
+  has_one :address, serializer: AddressSerializer
+  has_one :credit_card, serializer: CreditCardSerializer
 end
