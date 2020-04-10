@@ -3,7 +3,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show]
 
   def index
-    @products = Product.all
+    if current_user.present?
+      @products = Product.where.not(owner: current_user.id)
+    else
+      @products = Product.all
+    end
     render json: ProductSerializer.new(@products).serializable_hash
   end
 
@@ -12,8 +16,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
-    @product.save!
+    @product = current_user.products.create!(product_params)
     render json: ProductSerializer.new(@product).serializable_hash, status: :created, location: @product
   end
 
