@@ -20,6 +20,11 @@ class AddressesController < ApplicationController
   private
     def set_address
       @address = current_user.address
+      if @address.present?
+        puts "Hello"
+      else
+        puts "Goodbye"
+      end
     end
 
     def address_params
