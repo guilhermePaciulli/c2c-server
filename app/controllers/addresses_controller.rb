@@ -9,12 +9,12 @@ class AddressesController < ApplicationController
   def create
     @address = current_user.create_address(address_params)
     @address.save!
-    render AddressSerializer.new(@address).serializable_hash, status: :created
+    render json: AddressSerializer.new(@address).serializable_hash, status: :created
   end
 
   def update
     @address.update!(address_params)
-    render AddressSerializer.new(@address).serializable_hash
+    render json: AddressSerializer.new(@address).serializable_hash
   end
 
   private
@@ -23,6 +23,6 @@ class AddressesController < ApplicationController
     end
 
     def address_params
-      params.require(:address).permit(:zip_code, :complement)
+      params.permit(:zip_code, :complement)
     end
 end
