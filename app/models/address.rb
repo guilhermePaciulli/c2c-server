@@ -1,3 +1,4 @@
 class Address < ApplicationRecord
-  validates_presence_of :user_id, :zip_code, :complement
+  belongs_to :user
+  validates_presence_of :users_id, :zip_code, :complement
 end
