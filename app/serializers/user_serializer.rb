@@ -10,4 +10,6 @@ class UserSerializer
       object.profile_picture.service_url
     end
   end
+
+  has_many :products
 end

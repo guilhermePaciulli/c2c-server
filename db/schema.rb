@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_04_10_213918) do
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "owner"
   end
 
   create_table "users", force: :cascade do |t|
