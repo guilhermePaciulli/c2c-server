@@ -2,16 +2,29 @@ require 'rails_helper'
 
 RSpec.describe "Products CRUD", type: :request do
 
-  let!(:products) { create_list(:product, 10) }
+  let!(:user_id) { create(:user).id.to_s }
+  let!(:products) { create_list(:product, 10, owner: user_id) }
   let!(:first_product) { products.first.id }
 
   describe "get /products" do
-    context 'when no params are informed' do
+    context 'when there is no user' do
       before { get "/products" }
 
       it 'should return all products' do
         expect(json).not_to be_empty
         expect(json["data"].size).to eq(10)
+      end
+
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+    context 'when there is a user' do
+      before { get "/products", headers: authenticated_header_for_user_id(user_id) }
+
+      it 'should return no products' do
+        expect(json).not_to be_empty
+        expect(json["data"].size).to eq(0)
       end
 
       it 'returns status code 200' do

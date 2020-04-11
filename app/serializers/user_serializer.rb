@@ -10,4 +10,8 @@ class UserSerializer
       object.profile_picture.service_url
     end
   end
+
+  has_many :products, serializer: ProductSerializer
+  has_one :address, serializer: AddressSerializer
+  has_one :credit_card, serializer: CreditCardSerializer
 end
