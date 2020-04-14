@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :credit_cards
-
   post 'users' => 'users#create'
   post 'user_token' => 'user_token#create'
   get 'user_info/:id' => 'users#show'
