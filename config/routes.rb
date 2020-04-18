@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   # Purchase flow
   post 'buy/:id' => 'purchase#buy'
-
+  get 'purchases' => 'purchase#index'
+  get 'purchases/:id' => 'purchase#show'
 end
