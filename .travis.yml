@@ -1,6 +1,7 @@
 addons:
   postgresql: 12.2
 before_script:
+- cp config/database.yml.travis config/database.yml
 - psql -c 'create database travis_ci_test;' -U postgres
 dist: trusty
 language: ruby
@@ -13,6 +14,3 @@ env:
   RAILS_ENV: test
   global:
     secure: YCtSJV/twDnm7obCAkHX2twvoEIs1RKUbsP5NGSfvLhjQJGbJB+A3BXQA38Swh/HAKJ3PrHAeVqJv6tAv8rSIhTtC6To/I5e9XG7aL+LP1bMrkVOIpOj4kCQgJnIY6fXFA3MmSlTIv9To2RoY/Wfk3NWX7pUfMKCqFTjM5OwndJwerXJ0nNB8S0V7gystEzQhJBAPcICIRwPvxEhtpCetW4vZ1BNxz6/y5gKGrYxYeVoAPcwD+RBeaVLKjXAPyNg9nxxfNlkCgb4fOsG9mV1CD00m3R8/6lPl3CeoAjF9FvTriq7fFN51CZ9lnQFpLlePb/a4AM/AcYef4AMZ9d0Iy8UQBKy79QEpMPf+3KJOhFbXCOE13SHPVHvS0wc3L4iJCMyPEMylKaXqnAZiE8Vh7nuskmN8uFCv+bXgwDM+GxJ10oFrUpenyhvtmC9KGzISMf145aK/sq8fWigzdC8tK4qu0Vsvdr5zM5qKmxfelKqgYLbTvmN6VeVnjnHBfOeHPniN8ENRyKxe4WtJ5ekAqqI3GQ2dls2lcU5VPbvXI9HJeDCAT59rq1bPWUK51QKlManqPOT1Ooqdgeq3gfA60fVCmmaYYK4WsheWIBHMVMecMhlMfiKO0r5BT81I9+T4xXT29df2TdrAMumCpMSb7FkvcsrDGH8hh9x/R6Vo78=
-test:
-  adapter: postgresql
-  database: travis_ci_test
