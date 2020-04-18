@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.create!(product_params)
-    render json: ProductSerializer.new(@product).serializable_hash, status: :created, location: @product
+    render json: ProductSerializer.new(@product).serializable_hash, status: :created
   end
 
   private

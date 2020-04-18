@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   post 'buy/:id' => 'purchase#buy'
   get 'purchases' => 'purchase#index'
   get 'purchases/:id' => 'purchase#show'
+  get 'sells' => 'purchase#index_sells'
 end

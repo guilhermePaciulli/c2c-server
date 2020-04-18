@@ -79,4 +79,26 @@ RSpec.describe "Purchase flow", type: :request do
     end
   end
 
+  describe "get /sells" do
+    context "when the there is an user" do
+      before { get "/sells", headers: authenticated_header_for_user_id(seller_id) }
+
+      it "returns status code 200" do
+        expect(response).to have_http_status(200)
+      end
+
+      it "returns a valid json" do
+        expect(json).not_to be_empty
+        expect(json.size).to eq(1)
+      end
+    end
+    context "when the there is no user" do
+      before { get "/sells" }
+
+      it "returns status code 401" do
+        expect(response).to have_http_status(401)
+      end
+    end
+  end
+
 end
