@@ -1,0 +1,21 @@
+addons:
+  postgresql: 9.3
+  sonarcloud:
+    organization: guilhermepaciulli
+    token:
+      secure: "DfxJR3imM5a2cJ27bDdx9l4C/zM9udAi0dBpm43fiHFr8UWDS04DUNjb7swpTKooJ6CaAtI8I+VfWRI6eTmlMNcZVF0EdVZJTZ6dC8AODZWG91/Pc+z2p3Ypg1TdiTHC4GNJw5PeC5/MTVfMor7IR1c2KOUcv/yIPyWgOxOkzr9RHcokeQ8vJyUhkcYk6bYPlCLYeH6786AHVLl5z3p0bcrU6Jmth5y7f8+wMP4Z20ZCZoxb3+h2ab9FNi3y3zKpt3QVx59UCALIOEeiLkb1r4TrGRHBiChslPNu52sTK1vAo4ykU0wh313h3AeIl7Zi9RPuea1yGVMI/yDvZbCs9Dnft0lf1Y59l1IqWEX48ZXjmvvctVYW8LGVe03EiJnXJzJDpQBm3Y3hMzz9RX71PvsPAdcr+ltrd649yuwpqzMVP51Fnx0DS1RoSnmdhoPr2iWDLLPxdFWMQm1iCp1kxGZUT0he+AHDJMUgJ2PDfI+k+Gu7f3Jer8ii9x/KA6Owa3t1bcwuZV822cEFn2K+7Vy2rEcKPO/fTle+iKjCPzAqi6sPx6ZnUBk2ZqfUGK5tQxMGi7a3pKe3oZ/SQDUid+Bm7H4gHKZrbaxQ5uHlsFMD0QKjtG+ghgFBXqqZp6Xh2e2yBg5Tww0GVKHilgzs789IhGIk7W0GcLDQvor+RLQ="
+before_script:
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+dist: trusty
+language: ruby
+rvm:
+- 2.6.5
+script:
+- bundle exec rails db:migrate RAILS_ENV=test
+- COVERAGE=true bundle exec rspec  --require rails_helper
+- sonar-scanner
+env:
+  RAILS_ENV: test
+  global:
+  - secure: YCtSJV/twDnm7obCAkHX2twvoEIs1RKUbsP5NGSfvLhjQJGbJB+A3BXQA38Swh/HAKJ3PrHAeVqJv6tAv8rSIhTtC6To/I5e9XG7aL+LP1bMrkVOIpOj4kCQgJnIY6fXFA3MmSlTIv9To2RoY/Wfk3NWX7pUfMKCqFTjM5OwndJwerXJ0nNB8S0V7gystEzQhJBAPcICIRwPvxEhtpCetW4vZ1BNxz6/y5gKGrYxYeVoAPcwD+RBeaVLKjXAPyNg9nxxfNlkCgb4fOsG9mV1CD00m3R8/6lPl3CeoAjF9FvTriq7fFN51CZ9lnQFpLlePb/a4AM/AcYef4AMZ9d0Iy8UQBKy79QEpMPf+3KJOhFbXCOE13SHPVHvS0wc3L4iJCMyPEMylKaXqnAZiE8Vh7nuskmN8uFCv+bXgwDM+GxJ10oFrUpenyhvtmC9KGzISMf145aK/sq8fWigzdC8tK4qu0Vsvdr5zM5qKmxfelKqgYLbTvmN6VeVnjnHBfOeHPniN8ENRyKxe4WtJ5ekAqqI3GQ2dls2lcU5VPbvXI9HJeDCAT59rq1bPWUK51QKlManqPOT1Ooqdgeq3gfA60fVCmmaYYK4WsheWIBHMVMecMhlMfiKO0r5BT81I9+T4xXT29df2TdrAMumCpMSb7FkvcsrDGH8hh9x/R6Vo78=
