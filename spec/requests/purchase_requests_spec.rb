@@ -101,4 +101,28 @@ RSpec.describe "Purchase flow", type: :request do
     end
   end
 
+  describe "patch /sells" do
+    context "when the there is an user and the status is valid" do
+      before { patch "/sells/"+purchase.id.to_s,
+        headers: authenticated_header_for_user_id(seller_id) }
+
+      it "returns a valid json" do
+        expect(json).not_to be_empty
+        expect(json["purchase_status"]).to eq("confirmed")
+      end
+
+      it "returns status code 200" do
+        expect(response).to have_http_status(200)
+      end
+    end
+    context "when the there is an user and the status is invalid" do
+      before { patch "/sells/"+purchase.id.to_s,
+        headers: authenticated_header_for_user_id(buyer_id) }
+
+      it "returns status code 422" do
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
+  end
+
 end

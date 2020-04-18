@@ -19,5 +19,9 @@ RSpec.describe PurchaseController, type: :routing do
       expect(:get => "/sells").to route_to("purchase#index_sells")
     end
 
+    it "routes to #update" do
+      expect(:patch => "/sells/1").to route_to("purchase#update", :id => '1')
+    end
+
   end
 end

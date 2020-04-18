@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get 'purchases' => 'purchase#index'
   get 'purchases/:id' => 'purchase#show'
   get 'sells' => 'purchase#index_sells'
+  patch 'sells/:id' => 'purchase#update'
 end
