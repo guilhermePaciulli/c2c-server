@@ -36,7 +36,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'faker'
   gem 'database_cleaner'
-  gem 'simplecov'
+  gem 'simplecov', '0.17'
 end
 
 
