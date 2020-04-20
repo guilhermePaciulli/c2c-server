@@ -11,7 +11,13 @@ class UserSerializer
     end
   end
 
-  has_many :products, serializer: ProductSerializer
-  has_one :address, serializer: AddressSerializer
-  has_one :credit_card, serializer: CreditCardSerializer
+  attribute :purchases do |user|
+    BuyerSerializer.new(user.purchases).serializable_hash
+  end
+  attribute :credit_card, if: Proc.new { |user|
+    user.credit_card.present?
+  }
+  attribute :address, if: Proc.new { |user|
+    user.address.present?
+  }
 end
