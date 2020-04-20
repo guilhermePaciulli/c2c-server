@@ -5,6 +5,8 @@ RSpec.describe "Purchase flow", type: :request do
   let!(:seller_id) { create(:user).id.to_s }
   let!(:product_id) { create(:product, owner: seller_id).id.to_s }
   let!(:buyer_id) { create(:user).id.to_s }
+  let!(:address_id) { create(:address, user_id: buyer_id).id.to_s }
+  let!(:credit_card_id) { create(:credit_card, user_id: buyer_id).id.to_s }
 
   describe "post /buy" do
     context 'when there is an user and the product exists' do
@@ -33,7 +35,10 @@ RSpec.describe "Purchase flow", type: :request do
   end
 
   let!(:another_product_id)  { create(:product, owner: seller_id).id.to_s }
-  let!(:purchase) { create(:purchase, user_id: buyer_id, product_id: another_product_id) }
+  let!(:purchase) {
+    create(:purchase, user_id: buyer_id, product_id: another_product_id,
+    credit_card_id: credit_card_id, address_id: address_id)
+  }
 
   describe "get /purchases" do
     context "when the there is an user" do
@@ -67,7 +72,7 @@ RSpec.describe "Purchase flow", type: :request do
 
       it "returns a valid json" do
         expect(json).not_to be_empty
-        expect(json['id']).to eq(purchase.id)
+        expect(json['data']['id'].to_i).to eq(purchase.id)
       end
     end
     context "when the there is no user" do

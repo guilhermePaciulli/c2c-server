@@ -13,7 +13,6 @@ class UsersController < ApplicationController
       render json: OpenUserSerializer.new(@user).serializable_hash
     else
       options = {}
-      options[:include] = [:'address', :'credit_card', :'products']
       render json: UserSerializer.new(current_user, options).serializable_hash
     end
   end

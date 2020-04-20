@@ -4,22 +4,26 @@ class PurchaseController < ApplicationController
   before_action :set_purchase, only: [:show]
 
   def buy
-    current_user.purchases.create!(product: @product, purchase_status: "received")
+    current_user.purchases.create!(product: @product,
+                                   address: current_user.address,
+                                   credit_card: current_user.credit_card,
+                                   purchase_status: "waiting")
     render status: :created
   end
 
   def index
-    json_response(current_user.purchases.where.not(purchase_status: "received"))
+    purchases = current_user.purchases.where.not(purchase_status: "received")
+    render json: BuyerSerializer.new(@products).serializable_hash
   end
 
   def show
-    json_response(@purchase)
+    render json: BuyerSerializer.new(@purchase).serializable_hash
   end
 
   def index_sells
     sells = Purchase.joins(:product).where(products: { owner: current_user.id })
                                     .where.not(purchases: { purchase_status: "received" })
-    json_response(sells)
+    render json: SellerSerializer.new(sells).serializable_hash
   end
 
   def update
