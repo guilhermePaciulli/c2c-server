@@ -12,4 +12,10 @@ Rails.application.routes.draw do
   post 'address' => 'addresses#create'
   put 'address' => 'addresses#update'
 
+  # Purchase flow
+  post 'buy/:id' => 'purchase#buy'
+  get 'purchases' => 'purchase#index'
+  get 'purchases/:id' => 'purchase#show'
+  get 'sells' => 'purchase#index_sells'
+  patch 'sells/:id' => 'purchase#update'
 end
