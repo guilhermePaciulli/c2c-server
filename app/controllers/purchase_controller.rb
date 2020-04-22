@@ -13,7 +13,7 @@ class PurchaseController < ApplicationController
 
   def index
     purchases = current_user.purchases.where.not(purchase_status: "received")
-    render json: BuyerSerializer.new(@products).serializable_hash
+    render json: BuyerSerializer.new(purchases).serializable_hash
   end
 
   def show
