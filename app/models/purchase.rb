@@ -11,11 +11,10 @@ class Purchase < ApplicationRecord
     case purchase_status
     when "waiting"
       return "confirmed"
-    when "confimed"
+    when "confirmed"
       return "in_transit"
     when "in_transit"
       return "received"
     end
-    save!
   end
 end
