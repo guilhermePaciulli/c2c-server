@@ -23,6 +23,6 @@ class AddressesController < ApplicationController
     end
 
     def address_params
-      params.permit(:zip_code, :complement)
+      params.permit(:zip_code, :complement, :number)
     end
 end
