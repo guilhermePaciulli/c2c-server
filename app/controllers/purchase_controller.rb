@@ -29,11 +29,12 @@ class PurchaseController < ApplicationController
   def update
     purchase = Purchase.find(params[:id])
     next_status = purchase.next_purchase_status
-    if (next_status == "received" && purchase.user_id != current_user.id) || (purchase.product.owner != current_user.id)
+    if (purchase.product.owner == current_user.id && next_status != "received") || (next_status == "received" && purchase.user_id == current_user.id)
+      purchase.update!(purchase_status: next_status)
+      json_response({ :purchase_status => next_status })
+    else
       raise(ActiveRecord::RecordInvalid)
     end
-    purchase.update!(purchase_status: next_status)
-    json_response({ :purchase_status => next_status })
   end
 
   private
