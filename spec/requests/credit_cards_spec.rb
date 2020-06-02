@@ -12,7 +12,12 @@ RSpec.describe "CreditCards", type: :request do
       before { get '/credit_card', headers: authenticated_header_for_user_id(user.id.to_s) }
 
       it "should render a valid json" do
-        expect(json["data"]["attributes"]["number"]).to eq(credit_card.number)
+        attrs = json["data"]["attributes"]
+        expect(attrs["expiration"]).to eq(credit_card.expiration)
+        expect(attrs["cvv"]).to eq("***")
+        number = attrs["number"]
+        last_digits = number.to_s.length <= 4 ? number : number.to_s.slice(-4..-1)
+        expect(attrs["number"]).to eq("************#{last_digits}")
       end
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
