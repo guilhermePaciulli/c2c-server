@@ -130,4 +130,46 @@ RSpec.describe "Purchase flow", type: :request do
     end
   end
 
+  let!(:another_purchase) {
+    create(:purchase, user_id: buyer_id, product_id: another_product_id,
+    credit_card_id: credit_card_id, address_id: address_id)
+  }
+
+  let!(:another_purchase_2) {
+    create(:purchase, user_id: buyer_id, product_id: another_product_id,
+    credit_card_id: credit_card_id, address_id: address_id)
+  }
+
+  let!(:another_purchase_3) {
+    create(:purchase, user_id: buyer_id, product_id: another_product_id,
+    credit_card_id: credit_card_id, address_id: address_id)
+  }
+  let!(:strange_user_id) { create(:user).id.to_s }
+
+  describe "delete /purchases/:id" do
+    context "when the request is made by the seller" do
+      before { delete "/purchases/" + another_purchase.id.to_s,
+        headers: authenticated_header_for_user_id(seller_id) }
+
+      it "returns status code 204" do
+        expect(response).to have_http_status(204)
+      end
+    end
+    context "when the request is made by the user" do
+      before { delete "/purchases/" + another_purchase_2.id.to_s,
+        headers: authenticated_header_for_user_id(buyer_id) }
+
+      it "returns status code 204" do
+        expect(response).to have_http_status(204)
+      end
+    end
+    context "when the request is made by neither" do
+      before { delete "/purchases/" + another_purchase_3.id.to_s,
+        headers: authenticated_header_for_user_id(strange_user_id) }
+      it "returns status code 401" do
+        expect(response).to have_http_status(401)
+      end
+    end
+  end
+
 end
