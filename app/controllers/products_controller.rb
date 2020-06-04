@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
     if product == nil
       render status: :not_found
     else
-      product.update!(is_active: product.is_active)
+      product.update!(is_active: !product.is_active)
       render status: :no_content
     end
   end
