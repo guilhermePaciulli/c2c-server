@@ -1,7 +1,7 @@
 class PurchaseController < ApplicationController
   before_action :authenticate_user
   before_action :set_product, only: [:buy]
-  before_action :set_purchase, only: [:show]
+  before_action :set_purchase, only: [:show, :delete]
 
   def buy
     current_user.purchases.create!(product: @product,
@@ -34,6 +34,16 @@ class PurchaseController < ApplicationController
       json_response({ :purchase_status => next_status })
     else
       raise(ActiveRecord::RecordInvalid)
+    end
+  end
+
+  def delete
+    purchase = Purchase.find(params[:id])
+    if purchase.product.owner != current_user.id && purchase.user_id != current_user.id
+      render status: :unauthorized
+    else
+      purchase.destroy!
+      render status: :no_content
     end
   end
 
