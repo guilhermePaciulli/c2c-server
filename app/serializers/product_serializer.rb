@@ -1,7 +1,7 @@
 class ProductSerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :id, :name, :description, :price, :owner
+  attributes :id, :name, :description, :price, :owner, :is_active
 
   attribute :product_image_url do |object|
     if Rails.env.test?
