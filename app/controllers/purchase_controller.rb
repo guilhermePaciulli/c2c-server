@@ -4,9 +4,13 @@ class PurchaseController < ApplicationController
   before_action :set_purchase, only: [:show, :delete]
 
   def buy
+    copy_address = current_user.address.dup
+    copy_credit_card = current_user.credit_card.dup
+    copy_address.save!
+    copy_credit_card.save!
     current_user.purchases.create!(product: @product,
-                                   address: current_user.address,
-                                   credit_card: current_user.credit_card,
+                                   address: copy_address,
+                                   credit_card: copy_credit_card,
                                    purchase_status: "waiting")
     render status: :created
   end
