@@ -28,6 +28,4 @@ Rails.application.routes.draw do
   get 'sells' => 'purchase#index_sells'
   patch 'sells/:id' => 'purchase#update'
   delete 'purchases/:id' => 'purchase#delete'
-
-  root "application#index"
 end
