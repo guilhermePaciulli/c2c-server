@@ -1,3 +1,4 @@
+dist: xenial
 addons:
   postgresql: 9.3
   sonarcloud:
