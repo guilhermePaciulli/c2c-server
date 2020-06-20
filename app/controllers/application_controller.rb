@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
   include Knock::Authenticable
 
   def index
-    render html: "Welcome!"
+    render html: "Welcome to C2C!"
   end
 
 end
