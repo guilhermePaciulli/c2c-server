@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def show
     if @user
+      @user.name = "testing"
       render json: OpenUserSerializer.new(@user).serializable_hash
     else
       options = {}
